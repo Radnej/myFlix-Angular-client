@@ -55,6 +55,17 @@ public getMovies(Title: any): Observable<any> {
     .pipe(map(this.extractResponseData), catchError(this.handleError));
 }
 
+//API call to get director info endpoint
+public getDirector(directorName: any): Observable<any> {
+  
+  return this.http
+    .get(apiUrl + `movies/director/${directorName}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      }),
+    })
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
+}
 
 // Non-typed response extraction
 private extractResponseData(res: Response): any {
