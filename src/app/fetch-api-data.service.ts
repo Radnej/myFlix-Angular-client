@@ -32,16 +32,30 @@ public userLogin(userDetails: any): Observable<any> {
 }
 
  //API call to get all movies endpoint
-getAllMovies(): Observable<any> {
+public getAllMovies(): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
-    })}).pipe(
-    map(this.extractResponseData),
+    })}).pipe(map(this.extractResponseData),
     catchError(this.handleError)
   );
 }
+
+//API call to get one movie endpoint
+public getMovies(Title: any): Observable<any> {
+  const token = localStorage.getItem('token');
+
+  return this.http
+    .get(apiUrl + `movies/${Title}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      }),
+    })
+    .pipe(map(this.extractResponseData), catchError(this.handleError));
+}
+
+
 // Non-typed response extraction
 private extractResponseData(res: Response): any {
   const body = res;
