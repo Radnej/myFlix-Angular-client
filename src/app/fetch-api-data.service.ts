@@ -42,11 +42,28 @@ private handleError(error: HttpErrorResponse): any {
 }
 
   // Making the api call for the user log in endpoint
-  login(userDetails: any): Observable<any> {
+  public login(userDetails: any): Observable<any> {
     return this.http
       .post(`${apiUrl}login`, userDetails)
       .pipe(catchError(this.handleError));
   }
-  
 
+   //API call to get all movies endpoint
+  public getAllMovies(): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(`${apiUrl}movies`, {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+    // Non-typed response extraction
+    private extractResponseData(res: any): any {
+      const body = res;
+      return body || {};
+    }
+  }
 
