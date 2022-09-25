@@ -41,6 +41,12 @@ private handleError(error: HttpErrorResponse): any {
   );
 }
 
-
+  // Making the api call for the user log in endpoint
+  login(userDetails: any): Observable<any> {
+    return this.http
+      .post(`${apiUrl}login`, userDetails)
+      .pipe(catchError(this.handleError));
+  }
+  
 
 
