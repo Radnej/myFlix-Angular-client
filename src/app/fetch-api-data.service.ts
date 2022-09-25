@@ -7,6 +7,11 @@ import { map } from 'rxjs/operators';
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://my-flix-220508.herokuapp.com';
 
+//get token
+const token = localStorage.getItem("token");
+// get username form localStorage for URLs
+const usernmae = localStorage.getItem("username");
+
 @Injectable({
   providedIn: 'root'
 })
