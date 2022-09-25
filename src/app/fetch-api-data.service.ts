@@ -135,6 +135,19 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // API call to get data of a user and update user data endpoint
+  public  updateUser(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    return this.http
+      .put(`${apiUrl}users/${user}`, {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+  
     // Non-typed response extraction
     private extractResponseData(res: any): any {
       const body = res;
