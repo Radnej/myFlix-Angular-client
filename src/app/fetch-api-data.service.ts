@@ -85,10 +85,23 @@ private handleError(error: HttpErrorResponse): any {
   }
 
   //API call to get genre info endpoint
-   getGenre(genre: string): Observable<any> {
+   public getGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(`${apiUrl}genres/${genre}`, {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // API call to get data of a user endpoit
+  public getUser(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    return this.http
+      .get(`${apiUrl}users/${user}`, {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
