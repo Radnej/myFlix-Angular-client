@@ -122,6 +122,19 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // API call to add a movie to favourite Movies
+  public addFavoriteMovie(movie: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    return this.http
+      .put(`${apiUrl}users/${user}/movies/${movie}`, {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
     // Non-typed response extraction
     private extractResponseData(res: any): any {
       const body = res;
