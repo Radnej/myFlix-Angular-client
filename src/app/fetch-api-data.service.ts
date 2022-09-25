@@ -161,6 +161,20 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+   //Delete a movie from the favorite movies list
+   public removeFavoriteMovie(movieID: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    // Get username from localStorage for URLs
+    const username = localStorage.getItem('user');
+    return this.http
+      .delete(apiUrl + `users/${username}/movies/${movieID}`, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
     // Non-typed response extraction
     private extractResponseData(res: any): any {
       const body = res;
