@@ -72,6 +72,18 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+ //API call to get director info endpoint
+  public getDirector(director: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(`${apiUrl}directors/${director}`, {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
     // Non-typed response extraction
     private extractResponseData(res: any): any {
       const body = res;
