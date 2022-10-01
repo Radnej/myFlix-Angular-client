@@ -25,7 +25,7 @@ export class AppComponent {
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       // Assign dialog width
-      width: '280px'
+      width: '480px'
     });
   }
 }

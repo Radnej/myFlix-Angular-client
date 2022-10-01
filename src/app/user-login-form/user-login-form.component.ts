@@ -9,6 +9,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -48,3 +49,5 @@ export class UserLoginFormComponent implements OnInit {
     );
   }
 }
+
+
