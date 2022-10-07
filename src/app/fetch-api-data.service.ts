@@ -139,6 +139,8 @@ private handleError(error: HttpErrorResponse): any {
    public removeFavoriteMovie(movieID: any): Observable<any> {
     const token = localStorage.getItem('token');
 
+  
+
     // Get username from localStorage for URLs
     const user = localStorage.getItem('user');
     return this.http
@@ -149,6 +151,17 @@ private handleError(error: HttpErrorResponse): any {
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
+
+   //Get data on a single user endpoint
+     public getUser(): Observable<any> {
+      const token = localStorage.getItem('token');
+      const user = localStorage.getItem('user');
+      return this.http
+        .get(`${apiUrl}users/${user}`, {
+          headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+        })
+        .pipe(map(this.extractResponseData), catchError(this.handleError));
+    }
 
     // Non-typed response extraction
     private extractResponseData(res: any): any {
