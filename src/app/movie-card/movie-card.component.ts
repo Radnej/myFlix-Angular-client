@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
 
 import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
+import { MovieDirectorComponent } from '../movie-director/movie-director.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -36,4 +37,18 @@ openMovieGenreDialog(name: string, description: string): void {
     // Assign dialog width
     width: '500px'
   });
+}
+
+//opens the director dialog 
+openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
+  this.dialog.open(MovieDirectorComponent, {
+    data: {
+      Name: name,
+      Bio: bio,
+      Birthday: birthday,
+    },
+    // Assign dialog width
+    width: '500px'
+  });
+
 }}
