@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile-view',
@@ -35,7 +36,7 @@ export class ProfileViewComponent implements OnInit {
     }
   
 //deletes the user profile, redirects to welcome screen
-  deleteUser(): void {
+deleteUser(): void {
     if (confirm('Are you sure you want to delete your account? This cannnot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
         this.snackBar.open('You have successfully deleted your account!', 'OK', {
@@ -47,6 +48,13 @@ export class ProfileViewComponent implements OnInit {
         localStorage.clear();
       });
     }
+  }
+
+  // open the edit profile dialog
+  openEditProfileDialog(): void {
+    this.dialog.open(EditProfileComponent, {
+      width: '300px',
+    });
   }
 
 }
