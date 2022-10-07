@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  favoriteMovies: any[] = [];
   constructor(public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,) { }
 
@@ -27,6 +28,7 @@ getMovies(): void {
       return this.movies;
     });
   }
+
 
 //opens the genre dialog 
 openMovieGenreDialog(name: string, description: string): void {
@@ -64,5 +66,24 @@ openMovieSynopsisDialog(title: string, description: string): void {
     // Assign dialog width
     width: '500px'
   });
+}
 
-}}
+//Add a movie to the list of favorite movies 
+addToFavoriteMovies(MovieID: string): void {
+  console.log(MovieID);
+  this.fetchApiData.addFavoriteMovie(MovieID).subscribe((result) => {
+    console.log(result);
+    this.ngOnInit();
+  });
+}
+
+
+//Remove a movie from the list of favorite movies
+removeFromFavoriteMovies(MovieID: string): void {
+  console.log(MovieID);
+  this.fetchApiData.removeFavoriteMovie(MovieID).subscribe((result) => {
+    console.log(result);
+    this.ngOnInit();
+  });
+}
+}
