@@ -1,0 +1,46 @@
+$backgroundColor: #202125;
+$cardColor: #1a1b1f;
+$textColor: rgba(255, 255, 255, 0.814);
+$boxShadowColor: rgba(0, 0, 0, 0.221);
+
+.user-profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    background-color: $backgroundColor;
+    height: 100%;
+}
+
+
+.user-profile-card {
+    margin-top: 50px;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    box-shadow: 10px 5px 5px $boxShadowColor;
+    background-color: $cardColor;
+}
+
+.user-profile-card-header {
+    margin-bottom: 20px;
+    color: $textColor;
+    display: flex;
+    justify-content: center;
+}
+
+
+.user-profile-card-content {
+    color: $textColor;
+}
+
+.mat-card>.mat-card-actions:last-child {
+    margin-bottom: -8px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    border-radius: 20px;
+}

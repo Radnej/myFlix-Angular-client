@@ -5,6 +5,7 @@ import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from '../movie-director/movie-director.component';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -13,12 +14,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  favoriteMovies: any[] = [];
+  favorites: any[] = [];
   constructor(public fetchApiData: FetchApiDataService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
 ngOnInit(): void {
   this.getMovies();
+ 
 }
 
 getMovies(): void {
@@ -28,6 +31,8 @@ getMovies(): void {
       return this.movies;
     });
   }
+
+  
 
 
 //opens the genre dialog 
@@ -68,22 +73,29 @@ openMovieSynopsisDialog(title: string, description: string): void {
   });
 }
 
-//Add a movie to the list of favorite movies 
-addToFavoriteMovies(MovieID: string): void {
-  console.log(MovieID);
-  this.fetchApiData.addFavoriteMovie(MovieID).subscribe((result) => {
-    console.log(result);
-    this.ngOnInit();
-  });
+onToggleFavoriteMovie(id: string): any {
+  if (this.isFav(id)) {
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
+      this.snackBar.open('Removed from favorites!', 'OK', {
+        duration: 2000,
+      });
+    });
+    const index = this.movies.indexOf(id);
+    return this.movies.splice(index, 1);
+  } else {
+    this.fetchApiData.addFavoriteMovie(id).subscribe((resp: any) => {
+      this.snackBar.open('Added to favorites!', 'OK', {
+        duration: 2000,
+      });
+    });
+  }
+  return this.movies.push(id);
 }
 
 
-//Remove a movie from the list of favorite movies
-removeFromFavoriteMovies(MovieID: string): void {
-  console.log(MovieID);
-  this.fetchApiData.removeFavoriteMovie(MovieID).subscribe((result) => {
-    console.log(result);
-    this.ngOnInit();
-  });
+
+isFav(id: string): boolean {
+  return this.movies.includes(id)
 }
+
 }
