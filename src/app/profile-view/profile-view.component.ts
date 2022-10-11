@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
+
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
@@ -13,16 +14,21 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class ProfileViewComponent implements OnInit {
   user: any = {};
+ 
 
+
+  
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    
   ) { }
 
   ngOnInit(): void {
     this.getUser();
+   
   }
 
    //get the user's profile information
@@ -56,5 +62,7 @@ deleteUser(): void {
       width: '300px',
     });
   }
-
 }
+
+
+

@@ -44,3 +44,21 @@ $boxShadowColor: rgba(0, 0, 0, 0.221);
 button{
     border-radius: 20px;
 }
+
+
+.favorite-movies-heading {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    opacity: 80%;
+  }
+  
+  .favorite-movies {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  
