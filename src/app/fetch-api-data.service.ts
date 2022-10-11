@@ -114,34 +114,22 @@ private handleError(error: HttpErrorResponse): any {
   
 
   // API call to add a movie to favourite Movies
-  // public addFavoriteMovie(movieID: string): Observable<any> {
-  //   // Get Authorization token stored in local storage
-  //   const token = localStorage.getItem('token');
-  //   // Get Username stored in local storage
-  //   const username = localStorage.getItem('user');
-  //   console.log(apiUrl + `users/${username}/movies/${movieID}`);
-  //   return this.http
-  //     .post(apiUrl + `users/${username}/movies/${movieID}`, null, {
-  //       headers: new HttpHeaders({
-  //         Authorization: 'Bearer ' + token,
-  //       })
-  //     })
-  //     .pipe(
-  //       map(this.extractResponseData),
-  //       catchError(this.handleError)
-  //     );
-  // }
-
-  addFavoriteMovie(movieID: string): Observable<any> {
+  public addFavoriteMovie(movieID: any): Observable<any> {
+    // Get Authorization token stored in local storage
     const token = localStorage.getItem('token');
+    // Get Username stored in local storage
     const username = localStorage.getItem('user');
+    console.log(apiUrl + `users/${username}/movies/${movieID}`);
     return this.http
       .post(apiUrl + `users/${username}/movies/${movieID}`, null, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
-        }),
+        })
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(
+        map(this.extractResponseData),
+        catchError(this.handleError)
+      );
   }
 
 

@@ -14,6 +14,8 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class ProfileViewComponent implements OnInit {
   user: any = {};
+  movies: any = [];
+ 
  
 
 

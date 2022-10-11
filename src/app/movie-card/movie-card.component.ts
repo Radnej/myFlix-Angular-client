@@ -6,6 +6,7 @@ import { MovieDirectorComponent } from '../movie-director/movie-director.compone
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  favoriteMovies: any[] = [];
+  
 
   constructor(public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -22,7 +23,8 @@ export class MovieCardComponent {
 
 ngOnInit(): void {
   this.getMovies();
-  // this.getFavoriteMovies();
+
+  
  
 }
 
@@ -34,19 +36,12 @@ getMovies(): void {
     });
   }
 
-  
-  // getFavoriteMovies(): void {
-  //   this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
-  //     this.favoriteMovies = resp;
-  //     console.log(this.favoriteMovies);
-  //     return this.favoriteMovies;
-  //   });
-  // }
 
  
-  isFav(id: string): boolean {
-    return this.favoriteMovies.includes(id)
-  }
+
+ 
+
+  
 
 
 //opens the genre dialog 
@@ -87,22 +82,29 @@ openMovieSynopsisDialog(title: string, description: string): void {
   });
 }
 
-addFavoriteMovie(id: string): void {
-  console.log(id + "Movie id");
-  this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
-    console.log("Result");
-    console.log(result);
-    this.ngOnInit();
-  })
+onToggleFavoriteMovie(id: string): any {
+  if (this.isFav(id)) {
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
+      this.snackBar.open('Removed from favorites!', 'OK', {
+        duration: 2000,
+      });
+    });
+    const index = this.movies.indexOf(id);
+    return this.movies.splice(index, 1);
+  } else {
+    this.fetchApiData.addFavoriteMovie(id).subscribe((response: any) => {
+      this.snackBar.open('Added to favorites!', 'OK', {
+        duration: 2000,
+      });
+    });
+  }
+  return this.movies.push(id);
 }
 
 
-removeFavoriteMovie(id: string): void {
-  console.log(id);
-  this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
-    console.log(result);
-    this.ngOnInit();
-  })
+
+isFav(id: string): boolean {
+  return this.movies.includes(id)
 }
 
 }

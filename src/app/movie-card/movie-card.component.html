@@ -24,12 +24,13 @@
                 (click)="openMovieSynopsisDialog(movie.Title, movie.Description)" >
                 Synopsis
             </button>
-            <button mat-button *ngIf="!isFav(movie._id)" (click)="addFavoriteMovie(movie._id)" color="primary">
-                <mat-icon>favorite_border</mat-icon>
-            </button>
-            <!-- <button mat-button *ngIf="isFav(movie._id)" (click)="removeFavoriteMovie((movie._id)" color="primary">
-                <mat-icon>favorite</mat-icon>
-            </button> -->
+           <!--Add to favorites button-->
+           <button matTooltip="Favorite movie" matTooltipPosition="above" mat-icon-button (click)="onToggleFavoriteMovie(movie._id)">
+            <mat-icon color="warn">
+              <span *ngIf="isFav(movie._id); else elseBlock">star</span>
+              <ng-template #elseBlock>favorite_border</ng-template>
+            </mat-icon>
+          </button>
     </mat-card-actions>
   </mat-card>
 </div>
