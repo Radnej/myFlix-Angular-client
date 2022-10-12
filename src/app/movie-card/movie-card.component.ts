@@ -84,7 +84,8 @@ openMovieSynopsisDialog(title: string, description: string): void {
 
 onToggleFavoriteMovie(id: string): any {
   if (this.isFav(id)) {
-    this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
       this.snackBar.open('Removed from favorites!', 'OK', {
         duration: 2000,
       });
@@ -92,7 +93,8 @@ onToggleFavoriteMovie(id: string): any {
     const index = this.movies.indexOf(id);
     return this.movies.splice(index, 1);
   } else {
-    this.fetchApiData.addFavoriteMovie(id).subscribe((response: any) => {
+    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
       this.snackBar.open('Added to favorites!', 'OK', {
         duration: 2000,
       });

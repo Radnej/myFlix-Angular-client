@@ -28,7 +28,7 @@
            <button matTooltip="Favorite movie" matTooltipPosition="above" mat-icon-button (click)="onToggleFavoriteMovie(movie._id)">
             <mat-icon color="warn">
               <span *ngIf="isFav(movie._id); else elseBlock">star</span>
-              <ng-template #elseBlock>favorite_border</ng-template>
+             <ng-template #elseBlock>favorite_border</ng-template>
             </mat-icon>
           </button>
     </mat-card-actions>

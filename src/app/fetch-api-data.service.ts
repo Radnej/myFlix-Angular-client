@@ -114,7 +114,7 @@ private handleError(error: HttpErrorResponse): any {
   
 
   // API call to add a movie to favourite Movies
-  public addFavoriteMovie(movieID: any): Observable<any> {
+  public addFavoriteMovie(movieID: string): Observable<any> {
     // Get Authorization token stored in local storage
     const token = localStorage.getItem('token');
     // Get Username stored in local storage
@@ -131,6 +131,7 @@ private handleError(error: HttpErrorResponse): any {
         catchError(this.handleError)
       );
   }
+
 
 
    //Delete a movie from the favorite movies list
