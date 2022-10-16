@@ -15,6 +15,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  user: any = {};
+  favoriteMovies: any[] = [];
   
 
   constructor(public fetchApiData: FetchApiDataService,
@@ -23,6 +25,7 @@ export class MovieCardComponent {
 
 ngOnInit(): void {
   this.getMovies();
+  this.getUser();
 
   
  
@@ -36,12 +39,17 @@ getMovies(): void {
     });
   }
 
+   //get the user's profile information
+   
+   getUser(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.user = resp;
+      console.log(this.user);
+      return this.user;
+    });
+  }
 
- 
 
- 
-
-  
 
 
 //opens the genre dialog 
@@ -90,8 +98,8 @@ onToggleFavoriteMovie(id: string): any {
         duration: 2000,
       });
     });
-    const index = this.movies.indexOf(id);
-    return this.movies.splice(index, 1);
+    const index = this.favoriteMovies.indexOf(id);
+    return this.favoriteMovies.splice(index, 1);
   } else {
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
       console.log(result);
@@ -100,13 +108,13 @@ onToggleFavoriteMovie(id: string): any {
       });
     });
   }
-  return this.movies.push(id);
+  return this.favoriteMovies.push(id);
 }
 
 
 
 isFav(id: string): boolean {
-  return this.movies.includes(id)
+  return this.favoriteMovies.includes(id)
 }
 
 }
