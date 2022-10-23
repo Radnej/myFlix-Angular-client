@@ -11,7 +11,6 @@ $boxShadowColor: rgba(0, 0, 0, 0.221);
     align-items: center;
     padding: 30px 40px;
     background-color: $backgroundColor;
-    height: 100vh;
 }
 
 
@@ -22,7 +21,6 @@ $boxShadowColor: rgba(0, 0, 0, 0.221);
     flex-direction: column;
     box-shadow: 10px 5px 5px $boxShadowColor;
     background-color: $cardColor;
-   
 }
 
 .user-profile-card-header {
@@ -35,6 +33,7 @@ $boxShadowColor: rgba(0, 0, 0, 0.221);
 
 .user-profile-card-content {
     color: $textColor;
+    
 }
 
 .mat-card>.mat-card-actions:last-child {
@@ -59,10 +58,72 @@ button{
 //     margin: 20px;
 //   }
 
-  .fav-header{
+h1{
     color: $textColor;
-margin-top: 20px;  }
+margin-top: 20px; 
+text-align: center; }
 
 
+
+
+
+
+div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 0;
+    background-color: $backgroundColor;
+}
+
+.mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: $cardColor;
+    max-width: 280px;
+    width: 280px;
+    margin: 15px;
+    padding: 20px 3px;
+    box-shadow: 5px 5px 5px  $boxShadowColor;
+   
+}
+
+.mat-card-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: $textColor;
+}
+
+.movies-title {
+    display: flex;
+    max-width: 210px;
+    justify-content: center;
+    text-align: center;
+    line-height: normal;
+}
+
+img {
+    width: 250px;
+    height: 350px;
+    object-fit: contain;
+}
+
+
+
+.mat-card-subtitle{
+    color: #fff;
+    font-size: 12px;
+    opacity: 90%;
+}
+
+.mat-card-actions{
+    opacity: 70%;
+   
+}
 
 

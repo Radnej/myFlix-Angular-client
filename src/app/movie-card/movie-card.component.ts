@@ -113,8 +113,6 @@ onToggleFavoriteMovie(id: string): any {
 
 
 
-
-
 isFav(id: string): boolean {
   return this.FavoriteMovies.includes(id)
 }

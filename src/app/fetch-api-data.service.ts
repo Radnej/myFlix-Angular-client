@@ -93,6 +93,19 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+
+
+  getFavoriteMovies(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    return this.http
+      .get(apiUrl + `users/${username}`, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
   
 
   // API call to add a movie to favourite Movies
@@ -159,11 +172,6 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  
-    
-    
-
-  
 
 
    //Get data on a single user endpoint

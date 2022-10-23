@@ -28,13 +28,36 @@
         Delete Profile
       </button>
     </mat-card-actions>
-  </mat-card>
-   <!-- Display Favorite Movies -->
-   <h2 class="fav-header">My Favorites ({{user.FavoriteMovies.length}}):</h2>
-   <div class="movie-view" style="display: flex;">
-    <mat-card *ngFor="let movie of FavoriteMovies; let i = index">
-        
-  </mat-card>
-</div>
+  </mat-card >
+  <h1 id="favorites-title">My Favorites "{{user.FavoriteMovies.length}}":</h1>
 
+  <div id="favorite-movie-card-container">
+    <mat-card *ngFor="let movie of FavoriteMovies;" style="flex: 1 1 auto;">
+      <mat-card-header>
+        <mat-card-title style="font-size: 16px;">{{movie.Title}}</mat-card-title>
+        <mat-card-subtitle>Directed by:
+        <button style=" font-size: 14px;color:#fff;"
+                mat-button
+                (click)="openMovieDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birthday)"
+          >
+          {{movie.Director.Name}}
+            </button>
+        </mat-card-subtitle>
+        </mat-card-header>
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
+        <mat-card-actions >
+            <button style=" font-size: 14px;color:#fff"
+            mat-button (click)="openMovieGenreDialog(movie.Genre.Name, movie.Genre.Description)" 
+            >
+                Genre
+            </button>
+            <button style=" font-size: 14px; color:#fff"
+                mat-button
+                (click)="openMovieSynopsisDialog(movie.Title, movie.Description)" >
+                Synopsis
+            </button>
+        <mat-icon (click)="removeFavoriteMovie(movie._id)" style="color:brown ;">favorite_filled</mat-icon>
+      
+</mat-card-actions>
+</mat-card>
 </div>
