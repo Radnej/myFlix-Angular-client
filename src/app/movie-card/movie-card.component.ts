@@ -16,7 +16,7 @@ import { Title } from '@angular/platform-browser';
 export class MovieCardComponent {
   movies: any[] = [];
   user: any = {};
-  favoriteMovies: any[] = [];
+  FavoriteMovies: any[] = [];
   
 
   constructor(public fetchApiData: FetchApiDataService,
@@ -98,8 +98,8 @@ onToggleFavoriteMovie(id: string): any {
         duration: 2000,
       });
     });
-    const index = this.favoriteMovies.indexOf(id);
-    return this.favoriteMovies.splice(index, 1);
+    const index = this.FavoriteMovies.indexOf(id);
+    return this.FavoriteMovies.splice(index, 1);
   } else {
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
       console.log(result);
@@ -108,13 +108,15 @@ onToggleFavoriteMovie(id: string): any {
       });
     });
   }
-  return this.favoriteMovies.push(id);
+  return this.FavoriteMovies.push(id);
 }
 
 
 
+
+
 isFav(id: string): boolean {
-  return this.favoriteMovies.includes(id)
+  return this.FavoriteMovies.includes(id)
 }
 
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
+import { MovieDirectorComponent } from '../movie-director/movie-director.component';
+import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 
 import { Router } from '@angular/router';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
@@ -14,11 +17,11 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 export class ProfileViewComponent implements OnInit {
   user: any = {};
-  movies: any = [];
- 
- 
+  FavoriteMovies: any[] = [];
+  movies: any[] = [];
+  
 
-
+ 
   
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -30,7 +33,10 @@ export class ProfileViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    // this.getMovies();
+    // this.getFavoriteMovies();
    
+  
   }
 
    //get the user's profile information
@@ -42,6 +48,61 @@ export class ProfileViewComponent implements OnInit {
         return this.user;
       });
     }
+
+  
+    
+     
+     
+    
+
+   
+
+
+  
+
+      //opens the genre dialog 
+openMovieGenreDialog(name: string, description: string): void {
+  this.dialog.open(MovieGenreComponent, {
+    data: {
+      Name: name,
+      Description: description,
+    },
+    // Assign dialog width
+    width: '500px'
+  });
+}
+
+//opens the director dialog 
+openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
+  this.dialog.open(MovieDirectorComponent, {
+    data: {
+      Name: name,
+      Bio: bio,
+      Birthday: birthday,
+    },
+    // Assign dialog width
+    width: '500px'
+  });
+
+}
+
+//opens the synopsis dialog
+openMovieSynopsisDialog(title: string, description: string): void {
+  this.dialog.open(MovieSynopsisComponent, {
+    data: {
+      Title: title,
+      Description: description,
+    },
+    // Assign dialog width
+    width: '500px'
+  });
+}
+
+
+    
+
+  
+ 
   
 //deletes the user profile, redirects to welcome screen
 deleteUser(): void {
@@ -64,6 +125,15 @@ deleteUser(): void {
       width: '300px',
     });
   }
+  
+  
+  
+  
+  
+
+  
+
+
 }
 
 

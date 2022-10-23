@@ -70,24 +70,6 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // getFavoriteMovies(): Observable<any> {
-  //   // Get Authorization token stored in local storage
-  //   const token = localStorage.getItem('token');
-  //   // Get Username stored in local storage
-  //   const username = localStorage.getItem('user');
-  //   return this.http
-  //     .get(apiUrl + `users/${username}/movies`, {
-  //       headers: new HttpHeaders({
-  //         Authorization: 'Bearer ' + token,
-  //       })
-  //     })
-  //     .pipe(
-  //       map(this.extractResponseData),
-  //       catchError(this.handleError)
-  //     );
-  // }
-
- //API call to get director info endpoint
   public getDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -147,6 +129,9 @@ private handleError(error: HttpErrorResponse): any {
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
+
+
+
 
   // API call to get data of a user and update user data endpoint
   public  updateUser(updateDetails:any): Observable<any> {

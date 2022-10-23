@@ -30,4 +30,13 @@
     </mat-card-actions>
   </mat-card>
    <!-- Display Favorite Movies -->
+   <h2 class="fav-header">My Favorites ({{user.FavoriteMovies.length}}):</h2>
+   <div class="movie-view" style="display: flex;">
+    <mat-card *ngFor="let movie of FavoriteMovies; let i = index">
+        
+        
+    
+  </mat-card>
+</div>
+
 </div>
