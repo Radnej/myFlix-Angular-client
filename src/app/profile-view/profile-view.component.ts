@@ -51,28 +51,29 @@ export class ProfileViewComponent implements OnInit {
 
   
     getMovies(): void {
-      
-      this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-        this.movies = resp;
-        
-       
-        if (this.user.FavoriteMovies) {
-          this.FavoriteMovies = this.user.FavoriteMovies.map((_id: string) => {
-            return this.movies.find((movie: any) => {
-              return movie._id === _id;
+      this.fetchApiData.getAllMovies().subscribe(
+        (resp: any) => {
+          this.movies = resp;
+          this.fetchApiData.getUser().subscribe((resp: any) => {
+            this.user = resp;
+            this.FavoriteMovies = this.user.FavoriteMovies.map((_id: string) => {
+              return this.movies.find((movie: any) => {
+                return movie._id === _id;
+              });
             });
           });
+        },
+        (error: any) => {
+          console.error(error);
         }
-      }, (error: any) => {
-        console.error(error);
-      });
+      );
     }
   
     removeFavoriteMovie(id: string): void {
-      this.fetchApiData.removeFavoriteMovie(id).subscribe((resp:any) => {
-        location.reload();
-        
-      })
+      this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
+        const index = this.FavoriteMovies.map((m) => m._id).indexOf(id);
+        this.FavoriteMovies.splice(index, 1);
+      });
     }
 
     

@@ -44,6 +44,7 @@ getMovies(): void {
    getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
+      this.user.FavoriteMovies = this.user.FavoriteMovies;
       console.log(this.user);
       return this.user;
     });
