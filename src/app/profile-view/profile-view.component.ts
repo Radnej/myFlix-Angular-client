@@ -37,7 +37,11 @@ export class ProfileViewComponent implements OnInit {
   
   }
 
-   //get the user's profile information
+   /**
+   * Gets user data from api call and sets the user variable to returned JSON file
+   * @returns object holding user information
+   * @function getUser
+   */
    
      getUser(): void {
       this.fetchApiData.getUser().subscribe((resp: any) => {
@@ -69,6 +73,11 @@ export class ProfileViewComponent implements OnInit {
       );
     }
   
+     /**
+   * Remove movie from user"s favorite movies using API
+   * @function removeFromFavoriteMovies
+   */
+
     removeFavoriteMovie(id: string): void {
       this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
         const index = this.FavoriteMovies.map((m) => m._id).indexOf(id);
@@ -78,7 +87,11 @@ export class ProfileViewComponent implements OnInit {
 
     
   
-//deletes the user profile, redirects to welcome screen
+/**
+   * @function deleteProfile
+   * opens dialog to delete user and clear the stored user information
+   */
+
 deleteUser(): void {
     if (confirm('Are you sure you want to delete your account? This cannnot be undone.')) {
       this.router.navigate(['welcome']).then(() => {
@@ -93,14 +106,24 @@ deleteUser(): void {
     }
   }
 
-  // open the edit profile dialog
+   /**
+   * @function openEditProfileDialog
+   * opens dialog to allow user to edit information
+   */
+
   openEditProfileDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: '300px',
     });
   }
 
-  //opens the genre dialog 
+  /**
+   * Opens dialog of GenreComponent
+   * @param name
+   * @param description
+   * @function openGenreDialog
+   */
+
 openMovieGenreDialog(name: string, description: string): void {
   this.dialog.open(MovieGenreComponent, {
     data: {
@@ -112,7 +135,13 @@ openMovieGenreDialog(name: string, description: string): void {
   });
 }
 
-//opens the director dialog 
+/**
+   * Opens dialog of DirectorComponent
+   * @param name
+   * @param bio
+   * @param birth
+   * @function openDirectorDialog
+   */
 openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
   this.dialog.open(MovieDirectorComponent, {
     data: {
@@ -126,7 +155,12 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 
 }
 
-//opens the synopsis dialog
+/**
+   * Opens dialog of SynopsisComponent
+   * @param synopsis
+   * @function openSynopsisDialog
+   */
+
 openMovieSynopsisDialog(title: string, description: string): void {
   this.dialog.open(MovieSynopsisComponent, {
     data: {
@@ -137,10 +171,6 @@ openMovieSynopsisDialog(title: string, description: string): void {
     width: '500px'
   });
 }
-
-
-
-
 }
 
 

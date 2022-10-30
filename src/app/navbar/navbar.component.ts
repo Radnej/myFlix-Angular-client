@@ -16,17 +16,26 @@ export class NavbarComponent implements OnInit {
     this.user = localStorage.getItem('user');
   }
 
-   //navigate to user profile
+   /**
+   * navigates to user profile
+   */
+
    loadProfile(): void {
     this.router.navigate(['profile']);
   }
 
-  //navigate to movie-card page
+   /**
+   * navigates to movies (main) page
+   */ 
+
   loadMovies(): void {
     this.router.navigate(['movies']);
   }
 
-  //logout the user from app
+   /**
+   * logs out users, clears local storage to reset token and user
+   */
+  
   logoutUser(): void {
     localStorage.clear();
     alert('You have successfully logged out');

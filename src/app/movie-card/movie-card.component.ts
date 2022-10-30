@@ -31,6 +31,12 @@ ngOnInit(): void {
  
 }
 
+ /**
+   * Get data of all movies using API and store locally
+   * @return {array} data of all movies
+   * @function getMovies
+   */
+
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -39,20 +45,27 @@ getMovies(): void {
     });
   }
 
-   //get the user's profile information
+    /**
+   * Gets user data from api call and sets the user variable to returned JSON file
+   * @returns object holding user information
+   * @function getUser
+   */
    
    getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
-      this.FavoriteMovies = this.user.FavoriteMovies;      console.log(this.user);
+      this.FavoriteMovies = this.user.FavoriteMovies; console.log(this.user);
       return this.user;
     });
   }
 
+ /**
+   * Opens dialog of GenreComponent
+   * @param name
+   * @param description
+   * @function openGenreDialog
+   */
 
-
-
-//opens the genre dialog 
 openMovieGenreDialog(name: string, description: string): void {
   this.dialog.open(MovieGenreComponent, {
     data: {
@@ -64,7 +77,14 @@ openMovieGenreDialog(name: string, description: string): void {
   });
 }
 
-//opens the director dialog 
+/**
+   * Opens dialog of DirectorComponent
+   * @param name
+   * @param bio
+   * @param birth
+   * @function openDirectorDialog
+   */
+
 openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
   this.dialog.open(MovieDirectorComponent, {
     data: {
@@ -78,7 +98,12 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 
 }
 
-//opens the synopsis dialog
+/**
+   * Opens dialog of SynopsisComponent
+   * @param synopsis
+   * @function openSynopsisDialog
+   */
+
 openMovieSynopsisDialog(title: string, description: string): void {
   this.dialog.open(MovieSynopsisComponent, {
     data: {
@@ -89,6 +114,12 @@ openMovieSynopsisDialog(title: string, description: string): void {
     width: '500px'
   });
 }
+
+  /**
+   * 
+   * @param id  of movies 
+   * @returns list of favorite movies
+   */
 
 onToggleFavoriteMovie(id: string): any {
   if (this.isFav(id)) {
@@ -111,7 +142,11 @@ onToggleFavoriteMovie(id: string): any {
   return this.FavoriteMovies.push(id);
 }
 
-
+ /**
+   * 
+   * @param id of movies
+   * @returns favorite movies with the id of each movie
+   */
 
 isFav(id: string): boolean {
   return this.FavoriteMovies.includes(id)

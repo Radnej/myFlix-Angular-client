@@ -27,11 +27,14 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) { }
 
- 
-
   ngOnInit(): void {
   }
-  // sends form inputs for user login to backend via fetchApiData Service
+  
+    /**
+   * Login user
+   * @function loginUser
+   */
+
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
         this.dialogRef.close(); 
