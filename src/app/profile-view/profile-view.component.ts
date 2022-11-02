@@ -119,8 +119,8 @@ deleteUser(): void {
 
   /**
    * Opens dialog of GenreComponent
-   * @param name
-   * @param description
+   * @param {string} name
+   * @param {string} description
    * @function openGenreDialog
    */
 
@@ -137,9 +137,9 @@ openMovieGenreDialog(name: string, description: string): void {
 
 /**
    * Opens dialog of DirectorComponent
-   * @param name
-   * @param bio
-   * @param birth
+   * @param {string} name
+   * @param {string} bio
+   * @param {string} birthday
    * @function openDirectorDialog
    */
 openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
@@ -157,7 +157,8 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 
 /**
    * Opens dialog of SynopsisComponent
-   * @param synopsis
+   * @param {string} title
+   * @param {string} description
    * @function openSynopsisDialog
    */
 
