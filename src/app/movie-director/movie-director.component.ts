@@ -12,7 +12,7 @@ export class MovieDirectorComponent implements OnInit {
     public data: {
       Name: string,
       Bio: string,
-      Birthday: Date,
+      Birth: Date,
     }
   ) { }
 
