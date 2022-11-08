@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * @service navigates to user profile
+   * Navigates to user profile
    */
 
    loadProfile(): void {
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * @service navigates to movies (main) page
+   * Navigates to movies (main) page
    */ 
 
   loadMovies(): void {
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * @service logs out users, clears local storage to reset token and user
+   * logs out users, clears local storage to reset token and user
    */
 
   logoutUser(): void {

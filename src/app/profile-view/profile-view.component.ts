@@ -38,7 +38,7 @@ export class ProfileViewComponent implements OnInit {
   }
 
    /**
-   * @service Gets user data from api call and sets the user variable to returned JSON file
+   * Gets user data from api call and sets the user variable to returned JSON file
    * @returns object holding user information
    * @function getUser
    */
@@ -52,7 +52,7 @@ export class ProfileViewComponent implements OnInit {
     }
 
     /**
-   * @service Gets an array of all movies in json format
+   * Gets an array of all movies in json format
    * @returns a movie with a specific id
    * @function getMovies
    */
@@ -78,7 +78,7 @@ export class ProfileViewComponent implements OnInit {
     }
   
   /**
-   * @service Remove movie from user"s favorite movies using API
+   * Remove movie from user"s favorite movies using API
    * @params {string} id
    * @function removeFavoriteMovie
    */
@@ -93,7 +93,7 @@ export class ProfileViewComponent implements OnInit {
     
   
 /**
- * @service opens dialog to delete user and clear the stored user information
+ * Opens dialog to delete user and clear the stored user information
  * @function deleteUser
  */
 
@@ -112,7 +112,7 @@ deleteUser(): void {
   }
 
   /**
-   * @service opens dialog to allow user to edit information
+   * Opens dialog to allow user to edit information
    * @function openEditProfileDialog
    */
 
@@ -123,7 +123,7 @@ deleteUser(): void {
   }
 
   /**
-   * @service Opens dialog of GenreComponent
+   * Opens dialog of GenreComponent
    * @param {string} name
    * @param {string} description
    * @function openMovieGenreDialog
@@ -141,7 +141,7 @@ openMovieGenreDialog(name: string, description: string): void {
 }
 
 /**
-   * @service Opens dialog of DirectorComponent
+   * Opens dialog of DirectorComponent
    * @param {string} name
    * @param {string} bio
    * @param {Date} birthday
@@ -162,7 +162,7 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 }
 
 /**
-   * @service Opens dialog of SynopsisComponent
+   * Opens dialog of SynopsisComponent
    * @param {string} title
    * @param {string} description
    * @function openMovieSynopsisDialog

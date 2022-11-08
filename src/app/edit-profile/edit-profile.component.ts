@@ -22,7 +22,7 @@ export class EditProfileComponent implements OnInit {
   }
 
 /**
- * @service User can update his profile details
+ * User can update his profile details
  * @function updateUser
  */
   updateUser(): void {

@@ -60,7 +60,7 @@ getMovies(): void {
   }
 
  /**
-   * @service Opens dialog of GenreComponent
+   * Opens dialog of GenreComponent
    * @param {string} name
    * @param {string} description
    * @function openMovieGenreDialog
@@ -78,7 +78,7 @@ openMovieGenreDialog(name: string, description: string): void {
 }
 
 /**
-   * @service Opens dialog of DirectorComponent
+   * Opens dialog of DirectorComponent
    * @param {string} name
    * @param {string} bio
    * @param {Date} birthday
@@ -99,7 +99,7 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 }
 
 /**
-   * @service Opens dialog of SynopsisComponent
+   * Opens dialog of SynopsisComponent
    * @param {string} title
    * @param {string} description
    * @function openMovieSynopsisDialog
@@ -117,7 +117,7 @@ openMovieSynopsisDialog(title: string, description: string): void {
 }
 
   /**
-   * @service Add or remove a movie to the user favorite list of movies
+   * Add or remove a movie to the user favorite list of movies
    * @param {string} id  
    * @returns list of favorite movies
    * @function onToggleFavoriteMovie
@@ -145,7 +145,7 @@ onToggleFavoriteMovie(id: string): any {
 }
 
  /**
-   * @service specify a movie by their id as a user favorite movie 
+   * Specify a movie by their id as a user favorite movie 
    * @param {string} id 
    * @returns favorite movies with the id of each movie
    * @function isFav

@@ -35,7 +35,12 @@ public userRegistration(userDetails: any): Observable<any> {
   );
 }
 
-
+ /**
+   * handles errors
+   * @param error
+   * @returns error message
+   */
+  
 private handleError(error: HttpErrorResponse): any {
   if (error.error instanceof ErrorEvent) {
     console.error(`Some error occurred: ${error.error.message}`);

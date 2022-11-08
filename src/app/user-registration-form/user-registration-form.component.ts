@@ -26,7 +26,7 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
-   * @service Register user
+   * Register user
    * @function registerUser
    */
 

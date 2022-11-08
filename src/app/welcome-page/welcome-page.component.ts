@@ -14,7 +14,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   /**
-   * @service Open the dialog when the signup button is clicked
+   * Open the dialog when the signup button is clicked
    * @function openUserRegistrationDialog
    */
 
@@ -26,7 +26,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   /**
-   * @service Open the dialog when the login button is clicked
+   * Open the dialog when the login button is clicked
    * @function openUserLoginDialog
    */
 
