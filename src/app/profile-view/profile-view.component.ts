@@ -38,7 +38,7 @@ export class ProfileViewComponent implements OnInit {
   }
 
    /**
-   * Gets user data from api call and sets the user variable to returned JSON file
+   * @service Gets user data from api call and sets the user variable to returned JSON file
    * @returns object holding user information
    * @function getUser
    */
@@ -51,7 +51,11 @@ export class ProfileViewComponent implements OnInit {
       });
     }
 
-   
+    /**
+   * @service Gets an array of all movies in json format
+   * @returns a movie with a specific id
+   * @function getMovies
+   */
 
   
     getMovies(): void {
@@ -73,9 +77,10 @@ export class ProfileViewComponent implements OnInit {
       );
     }
   
-     /**
-   * Remove movie from user"s favorite movies using API
-   * @function removeFromFavoriteMovies
+  /**
+   * @service Remove movie from user"s favorite movies using API
+   * @params {string} id
+   * @function removeFavoriteMovie
    */
 
     removeFavoriteMovie(id: string): void {
@@ -88,9 +93,9 @@ export class ProfileViewComponent implements OnInit {
     
   
 /**
-   * @function deleteProfile
-   * opens dialog to delete user and clear the stored user information
-   */
+ * @service opens dialog to delete user and clear the stored user information
+ * @function deleteUser
+ */
 
 deleteUser(): void {
     if (confirm('Are you sure you want to delete your account? This cannnot be undone.')) {
@@ -106,9 +111,9 @@ deleteUser(): void {
     }
   }
 
-   /**
+  /**
+   * @service opens dialog to allow user to edit information
    * @function openEditProfileDialog
-   * opens dialog to allow user to edit information
    */
 
   openEditProfileDialog(): void {
@@ -118,10 +123,10 @@ deleteUser(): void {
   }
 
   /**
-   * Opens dialog of GenreComponent
+   * @service Opens dialog of GenreComponent
    * @param {string} name
    * @param {string} description
-   * @function openGenreDialog
+   * @function openMovieGenreDialog
    */
 
 openMovieGenreDialog(name: string, description: string): void {
@@ -136,12 +141,13 @@ openMovieGenreDialog(name: string, description: string): void {
 }
 
 /**
-   * Opens dialog of DirectorComponent
+   * @service Opens dialog of DirectorComponent
    * @param {string} name
    * @param {string} bio
-   * @param {string} birthday
-   * @function openDirectorDialog
+   * @param {Date} birthday
+   * @function openMovieDirectorDialog
    */
+
 openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
   this.dialog.open(MovieDirectorComponent, {
     data: {
@@ -156,10 +162,10 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 }
 
 /**
-   * Opens dialog of SynopsisComponent
+   * @service Opens dialog of SynopsisComponent
    * @param {string} title
    * @param {string} description
-   * @function openSynopsisDialog
+   * @function openMovieSynopsisDialog
    */
 
 openMovieSynopsisDialog(title: string, description: string): void {

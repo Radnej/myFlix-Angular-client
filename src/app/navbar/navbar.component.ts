@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * navigates to user profile
+   * @service navigates to user profile
    */
 
    loadProfile(): void {
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * navigates to movies (main) page
+   * @service navigates to movies (main) page
    */ 
 
   loadMovies(): void {
@@ -33,9 +33,9 @@ export class NavbarComponent implements OnInit {
   }
 
    /**
-   * logs out users, clears local storage to reset token and user
+   * @service logs out users, clears local storage to reset token and user
    */
-  
+
   logoutUser(): void {
     localStorage.clear();
     alert('You have successfully logged out');

@@ -60,10 +60,10 @@ getMovies(): void {
   }
 
  /**
-   * Opens dialog of GenreComponent
-    * @param {string} name
+   * @service Opens dialog of GenreComponent
+   * @param {string} name
    * @param {string} description
-   * @function openGenreDialog
+   * @function openMovieGenreDialog
    */
 
 openMovieGenreDialog(name: string, description: string): void {
@@ -78,11 +78,11 @@ openMovieGenreDialog(name: string, description: string): void {
 }
 
 /**
-   * Opens dialog of DirectorComponent
+   * @service Opens dialog of DirectorComponent
    * @param {string} name
    * @param {string} bio
-   * @param {string} birthday
-   * @function openDirectorDialog
+   * @param {Date} birthday
+   * @function openMovieDirectorDialog
    */
 
 openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
@@ -99,10 +99,10 @@ openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
 }
 
 /**
-   * Opens dialog of SynopsisComponent
+   * @service Opens dialog of SynopsisComponent
    * @param {string} title
-   * * @param {string} description
-   * @function openSynopsisDialog
+   * @param {string} description
+   * @function openMovieSynopsisDialog
    */
 
 openMovieSynopsisDialog(title: string, description: string): void {
@@ -117,9 +117,10 @@ openMovieSynopsisDialog(title: string, description: string): void {
 }
 
   /**
-   * 
+   * @service Add or remove a movie to the user favorite list of movies
    * @param {string} id  
    * @returns list of favorite movies
+   * @function onToggleFavoriteMovie
    */
 
 onToggleFavoriteMovie(id: string): any {
@@ -144,9 +145,10 @@ onToggleFavoriteMovie(id: string): any {
 }
 
  /**
-   * 
+   * @service specify a movie by their id as a user favorite movie 
    * @param {string} id 
    * @returns favorite movies with the id of each movie
+   * @function isFav
    */
 
 isFav(id: string): boolean {

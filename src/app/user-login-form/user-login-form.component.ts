@@ -31,7 +31,7 @@ export class UserLoginFormComponent implements OnInit {
   }
   
     /**
-   * Login user
+   * @service Login a user
    * @function loginUser
    */
 

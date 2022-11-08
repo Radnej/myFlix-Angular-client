@@ -23,6 +23,7 @@ export class FetchApiDataService {
   //API call to register a new user
 /**
  * @service POST to an API endpoint to register a new user
+ * @param {any} userDetails
  * @returns a new user object in json format
  * @function userRegistration
  */
@@ -34,12 +35,6 @@ public userRegistration(userDetails: any): Observable<any> {
   );
 }
 
-   /**
-   * handles errors
-   * @param error
-   * @returns error message
-   * @function handleError
-   */
 
 private handleError(error: HttpErrorResponse): any {
   if (error.error instanceof ErrorEvent) {
@@ -60,7 +55,6 @@ private handleError(error: HttpErrorResponse): any {
    * @param {any} userDetails
    * @returns a user object in json format
    * @function userLogin
-   * @returns
    */
   
   public userLogin(userDetails: any): Observable<any> {
@@ -91,8 +85,8 @@ private handleError(error: HttpErrorResponse): any {
   /**
    * @service GET to an API endpoint to get a movie by title
    * @param {string} title
-   * @returns a an array of movie objects in json format
-   * @function getMovieByTitle
+   * @returns an array of movie objects in json format
+   * @function getOneMovie
    */
 
   public getOneMovie(title: string): Observable<any> {
@@ -110,7 +104,7 @@ private handleError(error: HttpErrorResponse): any {
   /**
    * @service GET to an API endpoint to get director info
    * @param {string} director
-   * @returns a an array of movie objects in json format
+   * @returns data of director in JSON format
    * @function getDirector
    */
 
@@ -129,7 +123,7 @@ private handleError(error: HttpErrorResponse): any {
   /**
    * @service GET to an API endpoint to get genre info
    * @param {string} genre
-   * @returns a an array of movie objects in json format
+   * @returns data of genre in JSON format
    * @function getGenre
    */
 
@@ -147,7 +141,8 @@ private handleError(error: HttpErrorResponse): any {
   
   //API Endpoint to add favorite movie to user's list
   /**
-  * @param {string} movieID
+   * @service POST to an API endpoint to add movie to user's favorite movies list
+   * @param {string} movieID
    * @returns a user object in json format
    * @function addFavoriteMovie
    */
@@ -170,8 +165,9 @@ private handleError(error: HttpErrorResponse): any {
       );
   }
 
+  //API Endpoint to remove favorite movie from user's list
  /**
-   * DELETE API call to remove movie from favorite movies of a user
+   * @service DELETE to an API endpoint to remove a movie from a user's favorites list
    * @param {any} movieID
    * @returns a user object in json format
    * @function removeFavoriteMovie
@@ -192,6 +188,7 @@ private handleError(error: HttpErrorResponse): any {
 
 //API Endpoint to update user Details
   /**
+   * @service PUT to an API endpoint to update a user's details
    * @param {any} updateDetails
    * @returns a user object in json format
    * @function updateUser
@@ -211,8 +208,8 @@ private handleError(error: HttpErrorResponse): any {
 
     //API Endpoint to delete a user
   /**
-   * @service DELETE to an API endpoint to remove a movie from a user's favorites list
-   * @returns a user object in json format
+   * @service DELETE to an API endpoint to delete a user
+   * @returns a success meassage
    * @function deleteUser
    */
 
@@ -228,9 +225,10 @@ private handleError(error: HttpErrorResponse): any {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-     /**
-   * GET API call to get user data
-   * @returns user data in JSON
+   //API Endpoint to get specific user Info
+  /**
+   * @service GET to an API endpoint to get a specific user
+   * @returns a user object in JSON format
    * @function getUser
    */
 

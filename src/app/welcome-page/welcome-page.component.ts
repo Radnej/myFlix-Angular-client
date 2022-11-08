@@ -14,7 +14,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   /**
-   * Open the dialog when the signup button is clicked
+   * @service Open the dialog when the signup button is clicked
    * @function openUserRegistrationDialog
    */
 
@@ -25,11 +25,11 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-   /**
-   * Open the dialog when the login button is clicked
+  /**
+   * @service Open the dialog when the login button is clicked
    * @function openUserLoginDialog
    */
-  
+
 openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '400px',

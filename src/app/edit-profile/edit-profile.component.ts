@@ -21,8 +21,9 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /**
- * User can update his profile details
+/**
+ * @service User can update his profile details
+ * @function updateUser
  */
   updateUser(): void {
     console.log(this.userData);
