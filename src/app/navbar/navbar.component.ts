@@ -4,35 +4,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   user: any = '';
-  constructor(
-    public router: Router
-  ) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
   }
 
-   /**
+  /**
    * Navigates to user profile
    */
 
-   loadProfile(): void {
+  loadProfile(): void {
     this.router.navigate(['profile']);
   }
 
-   /**
+  /**
    * Navigates to movies (main) page
-   */ 
+   */
 
   loadMovies(): void {
     this.router.navigate(['movies']);
   }
 
-   /**
+  /**
    * logs out users, clears local storage to reset token and user
    */
 

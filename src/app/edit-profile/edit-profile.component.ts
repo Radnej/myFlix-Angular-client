@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
   @Input() userData: any = {};
@@ -18,13 +18,12 @@ export class EditProfileComponent implements OnInit {
     public router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-/**
- * User can update his profile details
- * @function updateUser
- */
+  /**
+   * User can update his profile details
+   * @function updateUser
+   */
   updateUser(): void {
     console.log(this.userData);
     this.fetchApiData.updateUser(this.userData).subscribe((result) => {
@@ -48,4 +47,3 @@ export class EditProfileComponent implements OnInit {
     });
   }
 }
-

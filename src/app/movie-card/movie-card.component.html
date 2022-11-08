@@ -1,36 +1,54 @@
-
-<div class="movie-view" style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
-        <mat-card-header>
-        <mat-card-title style="font-size: 16px;">{{movie.Title}}</mat-card-title>
-        <mat-card-subtitle>Directed by:
-        <button style=" font-size: 14px;color:#fff;"
-                mat-button
-                (click)="openMovieDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birthday)"
-          >
-          {{movie.Director.Name}}
-            </button>
-        </mat-card-subtitle>
-        </mat-card-header>
-        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
-        <mat-card-actions >
-            <button style=" font-size: 14px;color:#fff"
-            mat-button (click)="openMovieGenreDialog(movie.Genre.Name, movie.Genre.Description)" 
-            >
-                Genre
-            </button>
-            <button style=" font-size: 14px; color:#fff"
-                mat-button
-                (click)="openMovieSynopsisDialog(movie.Title, movie.Description)" >
-                Synopsis
-            </button>
-           <!--Add to favorites button-->
-           <button matTooltip="Favorite movie" matTooltipPosition="above" mat-icon-button (click)="onToggleFavoriteMovie(movie._id)">
-            <mat-icon color="warn">
-              <span *ngIf="isFav(movie._id); else elseBlock">star</span>
-             <ng-template #elseBlock>favorite_border</ng-template>
-            </mat-icon>
-          </button>
+<div class="movie-view" style="display: flex">
+  <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto">
+    <mat-card-header>
+      <mat-card-title style="font-size: 16px">{{ movie.Title }}</mat-card-title>
+      <mat-card-subtitle
+        >Directed by:
+        <button
+          style="font-size: 14px; color: #fff"
+          mat-button
+          (click)="
+            openMovieDirectorDialog(
+              movie.Director.Name,
+              movie.Director.Bio,
+              movie.Director.Birthday
+            )
+          "
+        >
+          {{ movie.Director.Name }}
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }}" />
+    <mat-card-actions>
+      <button
+        style="font-size: 14px; color: #fff"
+        mat-button
+        (click)="
+          openMovieGenreDialog(movie.Genre.Name, movie.Genre.Description)
+        "
+      >
+        Genre
+      </button>
+      <button
+        style="font-size: 14px; color: #fff"
+        mat-button
+        (click)="openMovieSynopsisDialog(movie.Title, movie.Description)"
+      >
+        Synopsis
+      </button>
+      <!--Add to favorites button-->
+      <button
+        matTooltip="Favorite movie"
+        matTooltipPosition="above"
+        mat-icon-button
+        (click)="onToggleFavoriteMovie(movie._id)"
+      >
+        <mat-icon color="warn">
+          <span *ngIf="isFav(movie._id); else elseBlock">star</span>
+          <ng-template #elseBlock>favorite_border</ng-template>
+        </mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

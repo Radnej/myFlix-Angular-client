@@ -8,9 +8,8 @@ describe('MovieDirectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MovieDirectorComponent ]
-    })
-    .compileComponents();
+      declarations: [MovieDirectorComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MovieDirectorComponent);
     component = fixture.componentInstance;

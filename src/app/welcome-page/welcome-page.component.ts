@@ -6,12 +6,11 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
-  styleUrls: ['./welcome-page.component.scss']
+  styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   /**
    * Open the dialog when the signup button is clicked
@@ -21,7 +20,7 @@ export class WelcomePageComponent implements OnInit {
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '400px',
-      height: '280px'
+      height: '280px',
     });
   }
 
@@ -30,11 +29,10 @@ export class WelcomePageComponent implements OnInit {
    * @function openUserLoginDialog
    */
 
-openUserLoginDialog(): void {
+  openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '400px',
-      height: '280px'
-      
+      height: '280px',
     });
   }
 }

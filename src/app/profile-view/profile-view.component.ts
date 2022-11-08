@@ -12,98 +12,97 @@ import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.compone
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.scss']
+  styleUrls: ['./profile-view.component.scss'],
 })
 export class ProfileViewComponent implements OnInit {
   user: any = {};
   FavoriteMovies: any[] = [];
   movies: any[] = [];
-  
 
- 
-  
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public router: Router,
-    public snackBar: MatSnackBar,
-    
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.getUser();
     this.getMovies();
-   
-  
   }
 
-   /**
+  /**
    * Gets user data from api call and sets the user variable to returned JSON file
    * @returns object holding user information
    * @function getUser
    */
-   
-     getUser(): void {
-      this.fetchApiData.getUser().subscribe((resp: any) => {
-        this.user = resp;
-        console.log(this.user);
-        return this.user;
-      });
-    }
 
-    /**
+  getUser(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.user = resp;
+      console.log(this.user);
+      return this.user;
+    });
+  }
+
+  /**
    * Gets an array of all movies in json format
    * @returns a movie with a specific id
    * @function getMovies
    */
 
-  
-    getMovies(): void {
-      this.fetchApiData.getAllMovies().subscribe(
-        (resp: any) => {
-          this.movies = resp;
-          this.fetchApiData.getUser().subscribe((resp: any) => {
-            this.user = resp;
-            this.FavoriteMovies = this.user.FavoriteMovies.map((_id: string) => {
-              return this.movies.find((movie: any) => {
-                return movie._id === _id;
-              });
+  getMovies(): void {
+    this.fetchApiData.getAllMovies().subscribe(
+      (resp: any) => {
+        this.movies = resp;
+        this.fetchApiData.getUser().subscribe((resp: any) => {
+          this.user = resp;
+          this.FavoriteMovies = this.user.FavoriteMovies.map((_id: string) => {
+            return this.movies.find((movie: any) => {
+              return movie._id === _id;
             });
           });
-        },
-        (error: any) => {
-          console.error(error);
-        }
-      );
-    }
-  
+        });
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
   /**
    * Remove movie from user"s favorite movies using API
    * @params {string} id
    * @function removeFavoriteMovie
    */
 
-    removeFavoriteMovie(id: string): void {
-      this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
-        const index = this.FavoriteMovies.map((m) => m._id).indexOf(id);
-        this.FavoriteMovies.splice(index, 1);
-      });
-    }
+  removeFavoriteMovie(id: string): void {
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
+      const index = this.FavoriteMovies.map((m) => m._id).indexOf(id);
+      this.FavoriteMovies.splice(index, 1);
+    });
+  }
 
-    
-  
-/**
- * Opens dialog to delete user and clear the stored user information
- * @function deleteUser
- */
+  /**
+   * Opens dialog to delete user and clear the stored user information
+   * @function deleteUser
+   */
 
-deleteUser(): void {
-    if (confirm('Are you sure you want to delete your account? This cannnot be undone.')) {
+  deleteUser(): void {
+    if (
+      confirm(
+        'Are you sure you want to delete your account? This cannnot be undone.'
+      )
+    ) {
       this.router.navigate(['welcome']).then(() => {
-        this.snackBar.open('You have successfully deleted your account!', 'OK', {
-          duration: 2000
-        });
-      })
+        this.snackBar.open(
+          'You have successfully deleted your account!',
+          'OK',
+          {
+            duration: 2000,
+          }
+        );
+      });
       this.fetchApiData.deleteUser().subscribe((result) => {
         console.log(result);
         localStorage.clear();
@@ -129,18 +128,18 @@ deleteUser(): void {
    * @function openMovieGenreDialog
    */
 
-openMovieGenreDialog(name: string, description: string): void {
-  this.dialog.open(MovieGenreComponent, {
-    data: {
-      Name: name,
-      Description: description,
-    },
-    // Assign dialog width
-    width: '500px'
-  });
-}
+  openMovieGenreDialog(name: string, description: string): void {
+    this.dialog.open(MovieGenreComponent, {
+      data: {
+        Name: name,
+        Description: description,
+      },
+      // Assign dialog width
+      width: '500px',
+    });
+  }
 
-/**
+  /**
    * Opens dialog of DirectorComponent
    * @param {string} name
    * @param {string} bio
@@ -148,37 +147,33 @@ openMovieGenreDialog(name: string, description: string): void {
    * @function openMovieDirectorDialog
    */
 
-openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
-  this.dialog.open(MovieDirectorComponent, {
-    data: {
-      Name: name,
-      Bio: bio,
-      Birthday: birthday,
-    },
-    // Assign dialog width
-    width: '500px'
-  });
+  openMovieDirectorDialog(name: string, bio: string, birthday: Date): void {
+    this.dialog.open(MovieDirectorComponent, {
+      data: {
+        Name: name,
+        Bio: bio,
+        Birthday: birthday,
+      },
+      // Assign dialog width
+      width: '500px',
+    });
+  }
 
-}
-
-/**
+  /**
    * Opens dialog of SynopsisComponent
    * @param {string} title
    * @param {string} description
    * @function openMovieSynopsisDialog
    */
 
-openMovieSynopsisDialog(title: string, description: string): void {
-  this.dialog.open(MovieSynopsisComponent, {
-    data: {
-      Title: title,
-      Description: description,
-    },
-    // Assign dialog width
-    width: '500px'
-  });
+  openMovieSynopsisDialog(title: string, description: string): void {
+    this.dialog.open(MovieSynopsisComponent, {
+      data: {
+        Title: title,
+        Description: description,
+      },
+      // Assign dialog width
+      width: '500px',
+    });
+  }
 }
-}
-
-
-
