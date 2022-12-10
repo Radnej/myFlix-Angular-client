@@ -17,52 +17,8 @@ Live version:[ myFlix-Angular-client](https://radnej.github.io/myFlix-Angular-cl
 - VS Code
 
 
-## Development server
-
-For a dev server. Navigate to `http://localhost:4200/` run
-```bash
-ng serve 
-```
-Note: The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-To generate a new component run 
-```bash
-ng generate component component-name
-```
- You can also use 
- ```bash
- ng generate directive|pipe|service|class|guard|interface|enum|module
- ```
-
-## Build
-
-To build the project run
-```bash
-ng build
-``` 
-The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-To execute the unit tests via [Karma](https://karma-runner.github.io) run
-```bash
-ng test
-``` 
-
-## Running end-to-end tests
-
-To execute the end-to-end tests via a platform of your choice run 
-```bash
-ng e2e
-``` 
-To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use 
-```bash
-ng help
-```  
-or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## To Run Locally
+1. download or clone the repository.
+2. in the terminal, navigate to the project folder
+3. run npm install to install dependencies.
+4. run npm start to start the project locally on localhost:4200
